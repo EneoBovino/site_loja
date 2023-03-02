@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% comment %} CAROUSEL {% endcomment %}
+
+{% include 'partials/_carousel.html' %}
+
+{% comment %} CONTEÚDO {% endcomment %}
+<main>
+    <div>
+        <h2>Aqui será o conteúdo da página</h2>
+        <p>Podemos reaproveitar o cabeçalho e rodapé do template base, assim tudo fica mais rápido e prático na hora de implementar algo novo.</p>
+    </div>
+
+    <div>
+        <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Produto</th>
+                <th scope="col">Fabricante</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Estoque</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                    <tr>
+                        {% comment %} <th scope="row">1</th> {% endcomment %}
+                        <td>{{ produto.name }}</td>
+                        <td>{{ produto.brand }}</td>
+                        <td>{{ produto.price }}</td>
+                        <td>{{ produto.stock }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+
+</main>
+
+{% include 'partials/_footer.html' %}
+
+{% endblock  %}

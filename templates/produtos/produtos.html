@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <h2>Bem vindo a nossa página de produtos</h2>
+    <p>Aqui poderemos personalizar a página a partir dos dados armazenados no BD.</p>
+</div>
+<div>
+    <div class="row g-2">
+        {% for item in data %}
+            {% if item.status %}
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-body">
+                        <h5 class="card-title">{{ item.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted"> {{item.category}} </h6>
+                        <p class="card-text"> {{ item.description|truncatechars:100 }} </p>
+                        <a href="#" class="btn btn-primary"> Compre agora </a>
+                        <a href="{% url 'produto' item.id %}" class="card-link"> Saiba mais </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock  %}
